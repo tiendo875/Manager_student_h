@@ -119,7 +119,7 @@ public class Manager {
                 if (validation.check_input_YN("Do you want to change name: ")) {
                     String change_name = validation.check_input_string("Enter name: ");
                     for (Student stu : list_find_ID) {
-                        arr.get(stu.getP()).setStudentName(change_name);
+                        stu.setStudentName(change_name);
                     }
                 } else;
                 String semeter = validation.check_input_string("Enter Semeter: ");
@@ -129,15 +129,15 @@ public class Manager {
                 if (validation.student_exist(arr, id, st.getStudentName(), semeter, course_name) == -1) {
                     
                     // ở đây mới set lại dữ liệu bởi vì nếu set ngay sau khi nhập thì sẽ update dữ liệu trước khi check
-                    arr.get(st.getP()).setSemester(semeter);
-                    arr.get(st.getP()).setCourseName(course_name);
+                    st.setSemester(semeter);
+                    st.setCourseName(course_name);
                     System.out.println("Update successful.");
                     break;
                 } else {
                     System.out.println("Duplicate.");
                 }
             } else {
-                arr.remove(st.getP());
+                arr.remove(st);
                 System.out.println("Delete successful.");
                 break;
             }
